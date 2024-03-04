@@ -32,8 +32,7 @@ nav{
     align-items: center;
 
     .container{
-        width: 1200px;
-        margin: 0 auto;
+        padding: 20px;
         img{
             height: 30px;
         }
