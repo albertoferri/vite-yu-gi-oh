@@ -41,7 +41,7 @@ nav{
             font-size: 48px;
             color: black;
             margin-left: 20px;
-            font-weight: bold;
+            font-weight: 500;
         }
     }
 

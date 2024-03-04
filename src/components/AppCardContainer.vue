@@ -2,6 +2,7 @@
 <script>
 import AppCard from "./AppCard.vue";
 import AppPagination from "./AppPagination.vue";
+import AppLoader from "./AppLoader.vue";
 
 import {store} from '../store.js';
 
@@ -13,6 +14,7 @@ export default{
     components:{
         AppCard,
         AppPagination,
+        AppLoader,
     },
     data(){
         return{
@@ -28,6 +30,7 @@ export default{
     
     <main>
         <div class="container">
+
             <AppPagination></AppPagination>
     
             <ul>
@@ -45,9 +48,10 @@ export default{
 
 <!-- --------QUI VA IL TUO CSS LEGATO A QUESTO COMPONENTS IN PARTICOLARE-------- -->
 <style scoped lang="scss">
+@use '../styles/variables' as *;
 
 main{
-    background-color: #d48f38;
+    background-color: $bg-color;
     padding: 20px;
 
     .container{
@@ -61,7 +65,7 @@ main{
             display: flex;
             justify-content: space-between;
             flex-flow: row wrap;
-            gap: 24px;
+            gap: $card-list-gap;
 
             padding: 20px;
 

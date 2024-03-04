@@ -19,7 +19,7 @@ export default {
 
 <section>
     <div class="container">
-        Elementi in pagina: {{ store.cards.length }}
+        <p>Found {{ store.cards.length }} cards</p>
     </div>
 </section>
 

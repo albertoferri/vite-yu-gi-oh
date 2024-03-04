@@ -27,6 +27,7 @@ export default{
 
 <!-- --------QUI VA IL TUO CSS LEGATO A QUESTO COMPONENTS IN PARTICOLARE-------- -->
 <style scoped lang="scss">
+@use '../styles/variables' as *;
 
 .card{
     display: flex;
@@ -34,9 +35,9 @@ export default{
     align-items: center;
     gap: .7em;
 
-    width: calc(100% / 5 - 24px);
+    width: calc(100% / 5 - $card-list-gap);
 
-    background-color: #d48f38;
+    background-color: $bg-color;
 
     img{
         width: 100%;
