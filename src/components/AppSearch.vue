@@ -1,9 +1,11 @@
 <script>
+// importiamo lo store
+import {store} from '../store.js';
 
 export default {
     data(){
         return{
-            type: [],
+            store,
         }
     }
 
@@ -15,11 +17,13 @@ export default {
     <div class="container">
 
         <div id="search-bar">
-            <select name="search" id="arch-select" @click="$emit('search')">
-                <option value="">alien</option>
-                <option value="">alien</option>
-                <option value="">alien</option>
+            <select name="search" id="arch-select" @change="$emit('search')">
+                <option v-for="archetype in this.store.archetypes" :value="archetype.archetype_name">
+                    {{ archetype.archetype_name }}
+                </option>
             </select>
+
+
         </div>
         
     </div>
@@ -35,7 +39,6 @@ export default {
         display: flex;
         gap: 12px;
         
-        margin-bottom: 1em;
         
         #arch-select {
             width: 120px;

@@ -42,20 +42,19 @@ export default{
 
   methods: {
 
-searchArchetype() {
+  searchArchetype() {
 
-  axios.get('https://db.ygoprodeck.com/api/v7/archetypes.php')
-  .then(res => {
-    const allArchetypes = res.data.map(item => item.archetype_name);
-    this.store.archetypes = allArchetypes;
-    console.log(allArchetypes)
-  })
-  .catch(error => {
-    console.error('Errore nel fetch dei dati:', error);
-  });
+    axios.get('https://db.ygoprodeck.com/api/v7/archetypes.php')
+    .then(response => {
+      console.log(response.data);
+      this.store.archetypes = response.data.map(item => item.archetype_name);
+      this.$forceUpdate();
+      // console.log(this.store.archetypes);
+    })
 
-  console.log("Ricerca percepita")
-},
+
+    console.log("Ricerca percepita")
+  },
 
 },
 
@@ -71,9 +70,9 @@ searchArchetype() {
 <template>
   <!-- <AppLoader v-if="! store.cards.length > 0"></AppLoader> -->
 
-  <AppSearch @search="searchArchetype()"></AppSearch>
-
+  
   <AppTitle></AppTitle>
+  <AppSearch @change="searchArchetype()"></AppSearch>
   <AppCardContainer></AppCardContainer>
   
 </template>
