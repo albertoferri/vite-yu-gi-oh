@@ -7,6 +7,8 @@ import {store} from './store.js';
 
 import AppTitle from './components/AppTitle.vue';
 import AppCardContainer from './components/AppCardContainer.vue';
+// import AppLoader from './components/AppLoader.vue';
+import AppSearch from './components/AppSearch.vue';
 
 export default{
 
@@ -23,8 +25,8 @@ export default{
     // creo una funzione axios get per estrapolare la proprietà che mi serve da questo api:https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0
     axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=40&offset=80')
       .then(response => {
-        console.log("Array in lista:", response.data.data);
         this.store.cards = response.data.data;
+        // console.log("Array in lista:", response.data.data);
 
       })
 
@@ -35,11 +37,41 @@ export default{
   components:{
     AppTitle,
     AppCardContainer,
-  }
+    AppSearch,
+  },
+
+  methods: {
+
+searchArchetype() {
+
+  axios.get('https://db.ygoprodeck.com/api/v7/archetypes.php')
+  .then(res => {
+    const allArchetypes = res.data.map(item => item.archetype_name);
+    this.store.archetypes = allArchetypes;
+    console.log(allArchetypes)
+  })
+  .catch(error => {
+    console.error('Errore nel fetch dei dati:', error);
+  });
+
+  console.log("Ricerca percepita")
+},
+
+},
+
+  
+
+
+
+
+
 }
 </script>
 
 <template>
+  <!-- <AppLoader v-if="! store.cards.length > 0"></AppLoader> -->
+
+  <AppSearch @search="searchArchetype()"></AppSearch>
 
   <AppTitle></AppTitle>
   <AppCardContainer></AppCardContainer>

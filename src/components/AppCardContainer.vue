@@ -35,11 +35,10 @@ export default{
     
             <ul>
                 <AppCard 
-                    v-for="(card, index) in store.cards"
-                    :key="index"
-                    :card="card"
+                v-for="currentCard in store.cards" 
+                :key="currentCard" 
+                :card="currentCard"
                 ></AppCard>
-               
             </ul>
         </div>
 
