@@ -37,7 +37,7 @@ export default{
 
     width: calc(100% / 5 - $card-list-gap);
 
-    background-color: $bg-color;
+    background-color: $bg-yugi;
 
     img{
         width: 100%;

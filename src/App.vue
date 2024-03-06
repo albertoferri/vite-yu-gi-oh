@@ -19,6 +19,14 @@ export default{
       store,
     }
   },
+
+  components:{
+    AppTitle,
+    AppCardContainer,
+    AppSearch,
+  },
+
+
   created() {
     // spazio di codice che viene eseguito appena l'applicazione viene lanciata
     
@@ -28,51 +36,42 @@ export default{
         this.store.cards = response.data.data;
         // console.log("Array in lista:", response.data.data);
 
+      });
+
+      // chiamata api per popolare la select archetypes
+
+      axios.get('https://db.ygoprodeck.com/api/v7/archetypes.php')
+      .then(res=> {
+        console.log('archetipi', res.data)
+        this.store.archetypes = res.data
       })
 
   },
 
 
-
-  components:{
-    AppTitle,
-    AppCardContainer,
-    AppSearch,
-  },
-
   methods: {
 
-  searchArchetype() {
-
-    axios.get('https://db.ygoprodeck.com/api/v7/archetypes.php')
-    .then(response => {
-      console.log(response.data);
-      this.store.archetypes = response.data.map(item => item.archetype_name);
-      this.$forceUpdate();
-      // console.log(this.store.archetypes);
-    })
-
-
-    console.log("Ricerca percepita")
-  },
+    filterCards() {
+      // console.log('Richiesta di filtro')
+      axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=50&offset=0&archetype=' + this.store.filterValue) 
+        .then(res => {
+          console.log('Numero di carte', res.data.meta.total_rows);
+          this.store.numberOfCards = res.data.meta.total_rows;
+          this.store.cards = res.data.data;
+      });
+    },
 
 },
-
-  
-
-
-
 
 
 }
 </script>
 
 <template>
-  <!-- <AppLoader v-if="! store.cards.length > 0"></AppLoader> -->
 
   
   <AppTitle></AppTitle>
-  <AppSearch @change="searchArchetype()"></AppSearch>
+  <AppSearch @filter="filterCards"></AppSearch>
   <AppCardContainer></AppCardContainer>
   
 </template>

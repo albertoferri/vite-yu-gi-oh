@@ -50,13 +50,13 @@ export default{
 @use '../styles/variables' as *;
 
 main{
-    background-color: $bg-color;
+    background-color: $bg-yugi;
     padding: 20px;
 
     .container{
         width: 1200px;
         margin: 0 auto;
-        background-color: white;
+        background-color: $bg-dark;
 
         ul{
             list-style-type: none;

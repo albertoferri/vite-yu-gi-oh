@@ -1,12 +1,22 @@
 <script>
+
+import AppPagination from './AppPagination.vue';
+
+
 // importiamo lo store
 import {store} from '../store.js';
 
 export default {
+
+    
     data(){
         return{
             store,
         }
+    },
+
+    component: {
+        AppPagination,
     }
 
 }
@@ -17,9 +27,14 @@ export default {
     <div class="container">
 
         <div id="search-bar">
-            <select name="search" id="arch-select" @change="$emit('search')">
-                <option v-for="archetype in this.store.archetypes" :value="archetype.archetype_name">
-                    {{ archetype.archetype_name }}
+            <select 
+                name="search" 
+                id="arch-select" 
+                @change="$emit('filter')"
+                v-model="store.filterValue"
+            >
+                <option v-for="currentArchetype in store.archetypes" :value="currentArchetype.archetype_name">
+                    {{ currentArchetype.archetype_name }}
                 </option>
             </select>
 
@@ -41,8 +56,8 @@ export default {
         
         
         #arch-select {
-            width: 120px;
-            padding: 6px 8px;
+            width: 250px;
+            padding: 8px 10px;
             text-align: center;
             text-transform: uppercase;
         }

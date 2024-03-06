@@ -19,20 +19,21 @@ export default {
 
 <section>
     <div class="container">
-        <p>Found {{ store.cards.length }} cards</p>
+        Numero di carte: {{ store.numberOfCards }}
     </div>
 </section>
 
 </template>
 
 <style lang="scss">
+@use '../styles/variables' as *;
 
 section {
     color: white;
 
     padding: 20px;
 
-    background-color: #212529;
+    background-color: $bg-dark;
 
     
 }
