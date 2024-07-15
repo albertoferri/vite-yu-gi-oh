@@ -25,8 +25,13 @@ export default {
 
 <template>
     <div class="container">
+        <div>
+            <a href="/" class="button">HOME</a>
+        </div>
 
         <div id="search-bar">
+            FILTRA PER TIPOLOGIA:
+
             <select 
                 name="search" 
                 id="arch-select" 
@@ -38,7 +43,6 @@ export default {
                 </option>
             </select>
 
-
         </div>
         
     </div>
@@ -48,10 +52,14 @@ export default {
 <style lang="scss" scoped>
 .container {
     padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     
 
     #search-bar {
         display: flex;
+        align-items: center;
         gap: 12px;
         
         
@@ -61,10 +69,21 @@ export default {
             text-align: center;
             text-transform: uppercase;
         }
-        
-        button {
-            padding: 8px 12px;
-            text-transform: uppercase
+    }
+
+    .button {
+        border: 1px solid white;
+        border-radius: 4px;
+        padding: 8px 12px;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+
+
+        &:hover{
+            background-color: white;
+            color: black;
         }
     }
 }

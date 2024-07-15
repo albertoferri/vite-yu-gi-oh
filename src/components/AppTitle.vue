@@ -13,7 +13,6 @@ export default{
 
     <nav>
         <div class="container">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Yu-Gi-Oh%21_%28Logo%29.jpg/640px-Yu-Gi-Oh%21_%28Logo%29.jpg" alt="logo">
             <span>Yu-Gi-Oh Api</span>
         </div>
     </nav>
@@ -25,21 +24,19 @@ export default{
 
 nav{
     width: 100%;
-    height: 100px;
-    background-color: white;
+    height: 350px;
+    background-image: url('https://images5.alphacoders.com/566/566301.jpg');
+    background-position: right;
 
     display: flex;
     align-items: center;
 
     .container{
         padding: 20px;
-        img{
-            height: 30px;
-        }
     
         span{
-            font-size: 48px;
-            color: black;
+            font-size: 90px;
+            color: blwhiteack;
             margin-left: 20px;
             font-weight: 500;
         }
